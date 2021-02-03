@@ -39,10 +39,9 @@ function getColor(d) {
  
 //Grabbing data with D3 function
 d3.json(url, function (data){
-    console.log(data.features)
-    createFeatures(data.features)
-})
-
-function createFeatures(earthquakeData) {
-    var earthquake
+    console.log(data);
+//
+    var earthquakeData = data.features;
+// Looping through all the JSON data
+  
 }
