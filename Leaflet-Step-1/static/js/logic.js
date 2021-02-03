@@ -25,4 +25,24 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: API_KEY
 }).addTo(myMap);
 
+//Create function to colorize eathquake depth
+function getColor(d) {
+    for (var i = 0; i < limits.length; i++) {
+      if (d < limits[i]) {
+        return colors[i - 1];
+      }
+      else if (d > limits[limits.length - 1]) {
+        return colors[limits.length - 1];
+      }
+    }
+  }
  
+//Grabbing data with D3 function
+d3.json(url, function (data){
+    console.log(data.features)
+    createFeatures(data.features)
+})
+
+function createFeatures(earthquakeData) {
+    var earthquake
+}
