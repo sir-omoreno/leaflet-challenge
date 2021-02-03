@@ -43,10 +43,10 @@ d3.json(url, function (data) {
     //
     var earthquakeData = data.features;
     // Looping through all the JSON data
-    for (var i = 0; i < earthquakeData[i].length; i++) {
+    for (var i = 0; i < earthquakeData.length; i++) {
         var eathquake_location = earthquakeData[i].geometry;
 
-        if (eathquake_location {
+        if (eathquake_location) {
             L.circleMarker([eathquake_location.coordinates[1], eathquake_location.coordinates[0]], {
                 fillOpacity: 0.50,
                 color: "white",
@@ -55,8 +55,11 @@ d3.json(url, function (data) {
                 // referenced starting on line 28
                 fillColor: getColor(eathquake_location.coordinates[2]),
                 // Adjust radius based on magnitude
-                radius: earthquakeData[i].properties.mag * 10
+                radius: earthquakeData[i].properties.mag * 5
             }).bindPopup("<h2>Magnitude: " + earthquakeData[i].properties.mag
                 + "<br>Depth: " + eathquake_location.coordinates[2]
-                + " kms</h2><hr><strong>Location: </strong>" + earthquakeData[i].properties.place).addTo(myMap);
+                + " kms</h2><hr><strong>Location: </strong>" + earthquakeData[i].properties.place)
+                .addTo(myMap);
         }
+    }
+});
