@@ -76,11 +76,16 @@ legend.onAdd = function (myMap) {
         labels = [];
 
     for (var i = 0; i < limits.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(limits[i] + 1) + '"></i> ' +
-            limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] + '<br>' : '+');
+        div.innerHTML += 
+        '<span style="background:' + getColor(limits[i] + 1) + '"></span> ';
     }
 
+    div.innerHTML += '<br>';
+
+    for (var i = 0; i < limits.lenght; i++) {
+        div.innerHTML +=
+            '<label>' + limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] : '+') + '</label>';
+    }
     return div;
 };
 
