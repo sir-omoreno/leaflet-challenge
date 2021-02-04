@@ -57,9 +57,9 @@ d3.json(url, function (data) {
                 fillColor: getColor(eathquake_location.coordinates[2]),
                 // Adjust radius based on magnitude
                 radius: earthquakeData[i].properties.mag * 5
-            }).bindPopup("<h>Magnitude: " + earthquakeData[i].properties.mag
+            }).bindPopup("<h5>Magnitude: " + earthquakeData[i].properties.mag
                 + "<br>Depth: " + eathquake_location.coordinates[2]
-                + " kms</h2><hr><strong>Location: </strong>" + earthquakeData[i].properties.place)
+                + " KM</h5><hr><strong>Location: </strong>" + earthquakeData[i].properties.place)
                 .addTo(myMap);
         }
     }
@@ -69,25 +69,46 @@ d3.json(url, function (data) {
 
 var legend = L.control({ position: 'bottomright' });
 
-legend.onAdd = function (myMap) {
-    // create div for legend
-    var div = L.DomUtil.create('div', 'info legend'),
-        limits = [-10, 10, 30, 50, 70, 90],
-        labels = [];
+    legend.onAdd = function (myMmap) {
 
-    for (var i = 0; i < limits.length; i++) {
-        div.innerHTML += 
-        '<span style="background:' + getColor(limits[i] + 1) + '"></span> ';
-    }
+        var div = L.DomUtil.create('div', 'legend'),
+            limits = [-10, 10, 30, 50, 70, 90],
+            labels = [];
 
-    div.innerHTML += '<br>';
+        div.innerHTML = '<p> Earthquake Magnitude Ranges </p>'
+        // loop through the set limits for earthquake magnitude
+        for (var i = 0; i < limits.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor(limits[i] + 1) + '"></i> ' +
+                limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] + '<br>' : '+');
+        }
+        return div;
+    };
+    legend.addTo(myMap);
 
-    for (var i = 0; i < limits.lenght; i++) {
-        div.innerHTML +=
-            '<label>' + limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] : '+') + '</label>';
-    }
-    return div;
-};
 
-// Adding legend to the map
-legend.addTo(myMap);
+
+// var legend = L.control({ position: 'bottomright' });
+
+// legend.onAdd = function (myMap) {
+//     // create div for legend
+//     var div = L.DomUtil.create('div', 'info legend'),
+//         limits = [-10, 10, 30, 50, 70, 90],
+//         labels = [];
+
+//     for (var i = 0; i < limits.length; i++) {
+//         div.innerHTML += 
+//         '<span style="background:' + getColor(limits[i] + 1) + '"></span> ';
+//     }
+
+//     div.innerHTML += '<br>';
+
+//     for (var i = 0; i < limits.lenght; i++) {
+//         div.innerHTML +=
+//             '<label>' + limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] : '+') + '</label>';
+//     }
+//     return div;
+// };
+
+// // Adding legend to the map
+// legend.addTo(myMap);
