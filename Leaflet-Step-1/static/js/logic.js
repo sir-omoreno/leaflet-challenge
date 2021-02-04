@@ -57,10 +57,30 @@ d3.json(url, function (data) {
                 fillColor: getColor(eathquake_location.coordinates[2]),
                 // Adjust radius based on magnitude
                 radius: earthquakeData[i].properties.mag * 5
-            }).bindPopup("<h2>Magnitude: " + earthquakeData[i].properties.mag
+            }).bindPopup("<h>Magnitude: " + earthquakeData[i].properties.mag
                 + "<br>Depth: " + eathquake_location.coordinates[2]
                 + " kms</h2><hr><strong>Location: </strong>" + earthquakeData[i].properties.place)
                 .addTo(myMap);
         }
     }
 });
+
+//Addind the legend
+
+var legend = L.control({ position: 'topright' });
+
+legend.onAdd = function (myMap) {
+  // create div for legend
+  var div = L.DomUtil.create('div', 'info legend');
+
+  // add title for legend
+  div.innerHTML = '<h5>Median Pet Age<br>per Organization</h5>';
+
+  div.innerHTML += '<i style="background:' + adultPetColor + '"></i> Adult Pet<br>';
+  div.innerHTML += '<i style="background:' + otherPetColor + '"></i> Other Pet<br>';
+ 
+  return div;
+}
+
+// Adding legend to the map
+legend.addTo(myMap);
