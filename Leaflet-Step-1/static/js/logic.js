@@ -71,14 +71,16 @@ var legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (myMap) {
   // create div for legend
-  var div = L.DomUtil.create('div', 'info legend');
+  var div = L.DomUtil.create('div', 'info legend'),
+        limits = [-10, 10, 30, 50, 70, 90],
+        labels = [];
 
-  // add title for legend
-  div.innerHTML = '<h5>Median Pet Age<br>per Organization</h5>';
-
-  div.innerHTML += '<i style="background:' + adultPetColor + '"></i> Adult Pet<br>';
-  div.innerHTML += '<i style="background:' + otherPetColor + '"></i> Other Pet<br>';
- 
+for (var i = 0; i < limits.length; i++){
+    div.innerHTML +=
+        '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+'); 
+}
+  
   return div;
 }
 
