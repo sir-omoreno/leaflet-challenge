@@ -2,7 +2,7 @@
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 //Hard code colors and limits for magnitude of depth size
 //color codes from https://htmlcolorcodes.com/color-chart/
-var colors = ['#CCFF00', '#FFFF00', '#00FF00', '#00CC00', '#009900', '#006600'];
+var colors = ['#66FF00', '#CCFF33', '#FFCC33', '#FF9933', '#FF9900', '#FF0000'];
 var limits = [-10, 10, 30, 50, 70, 90];
 
 
