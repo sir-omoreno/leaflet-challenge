@@ -1,8 +1,8 @@
 //Setting URL variable. In this case pulling data for the last 7 days
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 //Hard code colors and limits for magnitude of depth size
-var colors = ['#F30', '#F60', '#F90', '#FC0', '#FF0', '#9F3'];
-var limits = [-20, 10, 30, 50, 70, 90];
+var colors = ['#CCFF00', '#FFFF00', '#00FF00', '#00CC00', '#009900', '#006600'];
+var limits = [-10, 10, 30, 50, 70, 90];
 
 
 // d3.json(url, function (data) {
