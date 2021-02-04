@@ -67,7 +67,7 @@ d3.json(url, function (data) {
 
 //Addind the legend
 
-var legend = L.control({ position: 'topright' });
+var legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (myMap) {
   // create div for legend
