@@ -87,7 +87,7 @@ var legend = L.control({ position: 'bottomright' });
     legend.addTo(myMap);
 
 
-
+// Troubleshooting google chrone aligment issue.
 // var legend = L.control({ position: 'bottomright' });
 
 // legend.onAdd = function (myMap) {
